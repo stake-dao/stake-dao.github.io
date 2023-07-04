@@ -1,0 +1,27 @@
+# .github/workflows/publish.yml
+name: Update Bounties APRS (https://stake-dao.github.io/bounties/aprs/)
+
+on:
+  schedule:
+    - cron: "0 23 * * 3"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and Push
+    steps:
+      - name: git-checkout
+        uses: actions/checkout@v2
+
+      - name: Generate new JSON
+        run: make bounties-aprs
+
+      - name: Push
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: prod
+          FOLDER: out
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "Build: ({sha}) {msg}"
