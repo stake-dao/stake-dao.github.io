@@ -17,7 +17,7 @@ jobs:
       - name: Clone prod branch
         uses: actions/checkout@v2
         with:
-          repository: 0xVe/0xVe.github.io
+          repository: stake-dao/stake-dao.github.io
           path: out
           ref: prod
 
@@ -31,4 +31,4 @@ jobs:
           BRANCH: prod
           FOLDER: out
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MESSAGE: "Build: ({sha}) {msg}"
+          MESSAGE: "build: ({sha}) update bounties/aprs"
