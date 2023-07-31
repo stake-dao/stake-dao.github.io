@@ -3,7 +3,7 @@ name: Update Bounties APRS (https://stake-dao.github.io/bounties/aprs/)
 
 on:
   schedule:
-    - cron: "0 23 * * 3"
+    - cron: "0 21 * * 3"
   workflow_dispatch:
 
 jobs:
